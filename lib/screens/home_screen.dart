@@ -53,7 +53,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chat'),
+        title: const Text('Chatify'),
         actions: [
           IconButton(
               onPressed: () {
@@ -134,6 +134,38 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        iconSize: 30,
+        type: BottomNavigationBarType.fixed,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Padding(
+              padding: EdgeInsets.only(top: 8.0),
+              child: Icon(
+                Icons.messenger_rounded,
+              ),
+            ),
+            label: 'chats',
+          ),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.only(top: 8.0),
+                child: Icon(
+                  Icons.track_changes_outlined,
+                ),
+              ),
+              label: 'Updates'),
+          BottomNavigationBarItem(
+              icon: Padding(
+                padding: EdgeInsets.only(top: 8.0),
+                child: Icon(
+                  Icons.person,
+                  size: 30,
+                ),
+              ),
+              label: 'Account'),
         ],
       ),
     );
