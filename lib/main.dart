@@ -18,10 +18,18 @@ void main() async {
   );
 }
 
+final ThemeData darkTheme = ThemeData(
+  brightness: Brightness.dark,
+  colorScheme: const ColorScheme.dark(),
+);
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: AuthMiddleware());
+    return MaterialApp(
+        themeMode: ThemeMode.system,
+        darkTheme: darkTheme,
+        home: const AuthMiddleware());
   }
 }

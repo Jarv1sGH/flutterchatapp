@@ -21,7 +21,11 @@ class MessageTile extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 6),
                 child: Text(
                   isUserMsg ? 'You' : message.senderName,
-                  style: const TextStyle(fontSize: 15, color: Colors.black54),
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: Theme.of(context).brightness == Brightness.dark
+                          ? Colors.white60
+                          : Colors.black54),
                 ),
               ),
               Container(

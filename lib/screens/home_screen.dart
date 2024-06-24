@@ -53,7 +53,19 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chatify'),
+        title: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Text('Chatify'),
+            const SizedBox(
+              width: 6,
+            ),
+            Image.asset(
+              'assets/images/messageLogo.png',
+              width: 30,
+            ),
+          ],
+        ),
         actions: [
           IconButton(
               onPressed: () {
