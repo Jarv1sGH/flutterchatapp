@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterchatapp/components/profile_info_row.dart';
 
 class Profile extends StatelessWidget {
   const Profile({super.key});
@@ -51,9 +52,21 @@ class Profile extends StatelessWidget {
               ),
             ),
           ),
-          const Row(
-            children: [],
-          )
+          const ProfileInfoRow(
+            label: 'Name',
+            value: 'Username',
+            icon: Icons.person_2_outlined,
+          ),
+          const ProfileInfoRow(
+            label: 'Phone',
+            value: '1234567890',
+            icon: Icons.phone_enabled_outlined,
+          ),
+          const ProfileInfoRow(
+            label: 'About',
+            value: 'This is about me.',
+            icon: Icons.info_outline,
+          ),
         ],
       ),
     );

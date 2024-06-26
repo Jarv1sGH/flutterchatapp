@@ -30,6 +30,8 @@ class _ScreenWrapperState extends State<ScreenWrapper> {
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 30,
         onTap: onNavIconTap,
+        currentIndex: _selectedScreenIndex,
+        selectedItemColor: const Color.fromARGB(255, 137, 22, 172),
         type: BottomNavigationBarType.fixed,
         items: const [
           BottomNavigationBarItem(
@@ -50,14 +52,15 @@ class _ScreenWrapperState extends State<ScreenWrapper> {
               ),
               label: 'Updates'),
           BottomNavigationBarItem(
-              icon: Padding(
-                padding: EdgeInsets.only(top: 8.0),
-                child: Icon(
-                  Icons.person,
-                  size: 30,
-                ),
+            icon: Padding(
+              padding: EdgeInsets.only(top: 8.0),
+              child: Icon(
+                Icons.person,
+                size: 30,
               ),
-              label: 'Account'),
+            ),
+            label: 'Account',
+          ),
         ],
       ),
     );
