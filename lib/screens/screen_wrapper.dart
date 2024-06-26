@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutterchatapp/screens/home_screen.dart';
 import 'package:flutterchatapp/screens/profile.dart';
@@ -12,11 +14,10 @@ class ScreenWrapper extends StatefulWidget {
 
 class _ScreenWrapperState extends State<ScreenWrapper> {
   int _selectedScreenIndex = 0;
-  final List<Widget> _screens = [
-    const HomeScreen(),
-    const Updates(),
-    const Profile(),
-  ];
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  final FirebaseFirestore _fireStore = FirebaseFirestore.instance;
+  Map<String, dynamic>? _userData;
+
   void onNavIconTap(int index) {
     setState(() {
       _selectedScreenIndex = index;
@@ -24,9 +25,40 @@ class _ScreenWrapperState extends State<ScreenWrapper> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    getCurrentUser();
+  }
+
+  Future<void> getCurrentUser() async {
+    final String currentUserId = _firebaseAuth.currentUser!.uid;
+    DocumentSnapshot userDoc =
+        await _fireStore.collection('users').doc(currentUserId).get();
+    if (userDoc.exists) {
+      final data = userDoc.data() as Map<String, dynamic>;
+      setState(() {
+        _userData = data;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    List<Widget> screens = [
+      const HomeScreen(),
+      const Updates(),
+      _userData != null
+          ? Profile(
+              imgUrl: _userData!['imgUrl'] ?? 'assets/images/defaultUser.png',
+              username: _userData!['username'] ?? '',
+              aboutMe: _userData!['aboutMe'] ?? '',
+              phone: _userData!['mobileNum'] ?? '',
+              email: _userData!['email'] ?? '',
+            )
+          : Container(),
+    ];
     return Scaffold(
-      body: _screens[_selectedScreenIndex],
+      body: screens[_selectedScreenIndex],
       bottomNavigationBar: BottomNavigationBar(
         iconSize: 30,
         onTap: onNavIconTap,

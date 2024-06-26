@@ -2,8 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutterchatapp/components/profile_info_row.dart';
 
 class Profile extends StatelessWidget {
-  const Profile({super.key});
-
+  const Profile({
+    super.key,
+    required this.aboutMe,
+    required this.username,
+    required this.imgUrl,
+    required this.phone,
+    required this.email,
+  });
+  final String username;
+  final String aboutMe;
+  final String phone;
+  final String imgUrl;
+  final String email;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +38,7 @@ class Profile extends StatelessWidget {
                     width: 200,
                     height: 200,
                     child: Image.asset(
-                      'assets/images/defaultUser.png',
+                      imgUrl,
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -45,26 +56,30 @@ class Profile extends StatelessWidget {
                         ),
                         child: const Icon(
                           Icons.camera_alt_outlined,
-                          // color: Colors.black,
                         ),
                       )),
                 ],
               ),
             ),
           ),
-          const ProfileInfoRow(
+          ProfileInfoRow(
             label: 'Name',
-            value: 'Username',
+            value: username,
             icon: Icons.person_2_outlined,
           ),
-          const ProfileInfoRow(
+          ProfileInfoRow(
+            label: 'Email',
+            value: email,
+            icon: Icons.mail_outline,
+          ),
+          ProfileInfoRow(
             label: 'Phone',
-            value: '1234567890',
+            value: phone,
             icon: Icons.phone_enabled_outlined,
           ),
-          const ProfileInfoRow(
+          ProfileInfoRow(
             label: 'About',
-            value: 'This is about me.',
+            value: aboutMe,
             icon: Icons.info_outline,
           ),
         ],
