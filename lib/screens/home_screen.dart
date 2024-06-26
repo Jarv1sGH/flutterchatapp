@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutterchatapp/screens/profile.dart';
+import 'package:flutterchatapp/screens/updates.dart';
 import 'package:flutterchatapp/services/auth/auth_service.dart';
 import 'package:flutterchatapp/components/user_tile.dart';
 import 'package:flutterchatapp/screens/chat_screen.dart';
@@ -146,38 +148,6 @@ class _HomeScreenState extends State<HomeScreen> {
               },
             ),
           ),
-        ],
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        iconSize: 30,
-        type: BottomNavigationBarType.fixed,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Padding(
-              padding: EdgeInsets.only(top: 8.0),
-              child: Icon(
-                Icons.messenger_rounded,
-              ),
-            ),
-            label: 'chats',
-          ),
-          BottomNavigationBarItem(
-              icon: Padding(
-                padding: EdgeInsets.only(top: 8.0),
-                child: Icon(
-                  Icons.track_changes_outlined,
-                ),
-              ),
-              label: 'Updates'),
-          BottomNavigationBarItem(
-              icon: Padding(
-                padding: EdgeInsets.only(top: 8.0),
-                child: Icon(
-                  Icons.person,
-                  size: 30,
-                ),
-              ),
-              label: 'Account'),
         ],
       ),
     );

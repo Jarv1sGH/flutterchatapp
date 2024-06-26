@@ -78,7 +78,10 @@ class _ChatScreenState extends State<ChatScreen> {
                         return Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 12, vertical: 4),
-                          child: MessageTile(message: message),
+                          child: InkWell(
+                            onLongPress: () {},
+                            child: MessageTile(message: message),
+                          ),
                         );
                       });
                 }
